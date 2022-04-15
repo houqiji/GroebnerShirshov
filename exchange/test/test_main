@@ -1,0 +1,59 @@
+#代码效率太低电脑跑不出来的方法
+##合成展开
+#合成展开函数(将[[B,A,C,D,E]+[a1,B,C,D,E]+...[an,B,C,D,E]]加入ConbinePoly)
+def expansionPoly(ConbinePoly):
+    i = 0
+    while i <= len(ConbinePoly)-1:
+        afterExpasion = expansionPolyn(ConbinePoly[i])
+        for j in range(len(afterExpasion)):
+            ConbinePoly.insert(afterExpasion[i])
+        return (expansionPoly(ConbinePoly))
+
+
+#合成展开函数分组处理函数 (将[[B,A,a1,...,an],C,D,E]->[[B,A,C,D,E]+[a1,C,D,E]+...[an,C,D,E]])
+def expansionPolyn(ConbinePolyn):
+    i = 1
+    while i <= len(ConbinePolyn)-1:
+        if JudgeOrder(ConbinePolyn[i],ConbinePolyn[i+1]):
+            del ConbinePolyn[i]
+            afterExchange = ExchangeEle(ConbinePolyn[i],ConbinePolyn[i+1])
+            returnex = list(map(lambda x:ConbinePolyn.insert(i,x),afterExchange))
+            return returnex
+    return ConbinePolyn
+
+
+
+#交换元素函数（返回n个项在expansionpoly内处理 [A,B]->[A,B,a1,...,an])
+def ExchangeEle(ele1,ele2):
+    return 0
+
+
+
+
+def JudgeOrder(ele1,ele2):
+    return True
+
+
+
+
+exfu = []
+Poly = []
+i = 0
+j = 0
+for k in range(len(exfu)):
+    str(Poly[i][0])
+    Poly[i][0] = Poly[i][0] + '*' + exfu[k][0]
+    del exfu[k][0]
+# 删掉交换前的元素
+    del Poly[i][j+1]
+    del Poly[i][j+1]
+# 插入交换后的元素
+for l in range(len(exfu)):
+    #倒序保证插入顺序正确
+    exfu[l].reverse()
+    for m in range(len(exfu[l])):
+        Poly[i].insert(j+1, exfu[l][m])
+    ConbinePoly = []
+    for n in range(len(Poly)):
+        ConbinePoly.append(Poly[n])
+    print('=',ConbinePoly)

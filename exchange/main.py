@@ -112,6 +112,7 @@ def ExpansionPoly(Poly = None, exfu=None):
 def FindExchange(elef1, elef2, fe1 = None, fe2 = None):
     fe1 = elef1.copy()
     fe2 = elef2.copy()
+
     ExDict = {
         'M2nM1n': [
             ['q^2', ['M1', 'n'], ['M2', 'n']]
